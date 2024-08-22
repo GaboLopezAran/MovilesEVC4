@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import com.idat.proyectoevc4.modelo.Cita
 import com.idat.proyectoevc4.modelo.Dueno
 import com.idat.proyectoevc4.modelo.LoginRequest
+import com.idat.proyectoevc4.modelo.Mascota
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -27,6 +28,10 @@ interface WebService {
     suspend fun ingresarCita(@Body cita: Cita): Response<Cita>
     @GET("Cita/Listar")
     suspend fun listarCita():Response<List<Cita>>
+
+    //Mascota
+    @GET("/Mascota/Listar")
+    suspend fun listarMascota():Response<List<Mascota>>
 
     //Dueneo
     @POST("Dueno/Ingresar")

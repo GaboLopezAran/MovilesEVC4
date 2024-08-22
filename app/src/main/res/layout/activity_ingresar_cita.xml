@@ -13,71 +13,64 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:text="Ingresa Cita"
+        android:textColor="#1B87DD"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/spMacotas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="23dp"
-        android:textStyle="bold"
-        android:textColor="#1B87DD"
-        />
-
-    <EditText
-        android:id="@+id/edtMascotaC"
-        android:layout_width="283dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="Ingresa Mascota"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:background="@drawable/caja"
-        />
+        app:layout_constraintVertical_bias="0.216" />
 
     <EditText
         android:id="@+id/edtFechaC"
         android:layout_width="283dp"
         android:layout_height="55dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/caja"
         android:ems="10"
         android:hint="Ingresa Fecha"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/edtMotivoC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtMascotaC"
-        android:background="@drawable/caja"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edtMotivoC"
         android:layout_width="283dp"
         android:layout_height="55dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Ingresa Motivo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtFechaC"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/caja"
-        />
+        android:ems="10"
+        android:hint="Ingresa Motivo"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrarCita"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnRegistrarCita"
         android:layout_width="198dp"
         android:layout_height="59dp"
-        android:layout_marginTop="76dp"
-        android:text="Registrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtMotivoC"
-        android:textSize="16sp"
+        android:layout_marginBottom="196dp"
         android:backgroundTint="#1B87DD"
+        android:text="Registrar"
         android:textColor="@color/white"
-        />
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spMacotas"
+        android:layout_width="283dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/caja"
+        app:layout_constraintBottom_toTopOf="@+id/edtFechaC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,10 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -18,12 +20,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+data class MascotaItem(val id: Int, val nombre: String)
+
 class IngresarCitaActivity : AppCompatActivity() {
 
-    private lateinit var edtMascotaC:EditText
-    private lateinit var edtFehaC:EditText
-    private lateinit var edtMotivoC:EditText
+    private lateinit var spMacotas: Spinner
+    private lateinit var edtFehaC: EditText
+    private lateinit var edtMotivoC: EditText
     private lateinit var btnRegistrarCita: Button
+
+    private var mascotaItems: List<MascotaItem> = listOf() // Lista para almacenar las mascotas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,37 +45,83 @@ class IngresarCitaActivity : AppCompatActivity() {
 
     private fun asignarReferencias() {
 
-        //Se asignan las variables para trabajar
-        edtMascotaC=findViewById(R.id.edtMascotaC)
-        edtFehaC=findViewById(R.id.edtFechaC)
-        edtMotivoC=findViewById(R.id.edtMotivoC)
-        btnRegistrarCita=findViewById(R.id.btnRegistrarCita)
+        // Se asignan las variables para trabajar
+        spMacotas = findViewById(R.id.spMacotas)
+        edtFehaC = findViewById(R.id.edtFechaC)
+        edtMotivoC = findViewById(R.id.edtMotivoC)
+        btnRegistrarCita = findViewById(R.id.btnRegistrarCita)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitCliente.objWebService.listarMascota()
+                if (response.isSuccessful) {
+                    val mascotas = response.body()
+                    mascotas?.let {
+                        mascotaItems = it.map { mascota ->
+                            MascotaItem(mascota.id_mascota, mascota.nombre)
+                        }
+
+                        // Actualiza el UI en el hilo principal
+                        runOnUiThread {
+                            val adapter = ArrayAdapter(
+                                this@IngresarCitaActivity,
+                                android.R.layout.simple_spinner_item,
+                                mascotaItems.map { item -> item.nombre }
+                            )
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            spMacotas.adapter = adapter
+                        }
+                    }
+                } else {
+                    Log.e("IngresarCitaActivity", "Error en la respuesta: ${response.message()}")
+                }
+            } catch (e: Exception) {
+                Log.e("IngresarCitaActivity", "Error al obtener las mascotas", e)
+            }
+        }
 
         btnRegistrarCita.setOnClickListener {
             // Se extrae el contenido
-            val mascota = edtMascotaC.text.toString().toIntOrNull() ?: 0
             val fecha = edtFehaC.text.toString()
             val motivo = edtMotivoC.text.toString()
 
-            val cita = Cita(0, mascota, motivo, fecha)
+            val posicionSeleccionada = spMacotas.selectedItemPosition
+            if (posicionSeleccionada != -1) {
+                // Obtener el ID de la mascota seleccionada
+                val idMascotaSeleccionada = mascotaItems[posicionSeleccionada].id
 
-            CoroutineScope(Dispatchers.IO).launch {
-                val rpta = RetrofitCliente.objWebService.ingresarCita(cita)
+                // Crear un objeto Cita con el ID de la mascota seleccionada
+                val cita = Cita(0,idMascotaSeleccionada,fecha,motivo )
+
+                // Registrar la cita
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        val response = RetrofitCliente.objWebService.ingresarCita(cita)
+                        if (response.isSuccessful) {
+                            runOnUiThread {
+                                mostrarMensaje("Cita registrada con éxito")
+                            }
+                        } else {
+                            Log.e("IngresarCitaActivity", "Error en la respuesta: ${response.message()}")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("IngresarCitaActivity", "Error al registrar la cita", e)
+                    }
+                }
+            } else {
                 runOnUiThread {
-                   if(rpta.isSuccessful){
-                       mostrarMensaje("La cita fue separada satisfactoriamente")
-                   }
+                    mostrarMensaje("Por favor, selecciona una mascota")
                 }
             }
-
         }
     }
-    private fun mostrarMensaje(mensaje:String){
+
+    private fun mostrarMensaje(mensaje: String) {
         val ventana = AlertDialog.Builder(this)
         ventana.setTitle("Información")
         ventana.setMessage(mensaje)
         ventana.setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ListaCitaActivity::class.java)
             startActivity(intent)
         })
         ventana.create().show()
