@@ -29,7 +29,7 @@ class IngresarCitaActivity : AppCompatActivity() {
     private lateinit var edtMotivoC: EditText
     private lateinit var btnRegistrarCita: Button
 
-    private var mascotaItems: List<MascotaItem> = listOf() // Lista para almacenar las mascotas
+    private var mascotaItems: List<MascotaItem> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,7 +121,7 @@ class IngresarCitaActivity : AppCompatActivity() {
         ventana.setTitle("Información")
         ventana.setMessage(mensaje)
         ventana.setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
-            val intent = Intent(this, ListaCitaActivity::class.java)
+            val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         })
         ventana.create().show()

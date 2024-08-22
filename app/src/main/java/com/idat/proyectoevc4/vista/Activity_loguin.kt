@@ -68,9 +68,6 @@ class Activity_loguin : AppCompatActivity() {
                 val response = RetrofitCliente.objWebService.login(loginRequest)
                 val responseBody = response.body()?.string()
 
-                // Imprimir la respuesta del servidor en el log
-                Log.d("ServerResponse", "Respuesta del servidor: $responseBody")
-
                 runOnUiThread {
                     if (response.isSuccessful && responseBody?.contains("exitoso") == true) {
                         Toast.makeText(this@Activity_loguin, "Inicio de Sesión Exitoso", Toast.LENGTH_SHORT).show()

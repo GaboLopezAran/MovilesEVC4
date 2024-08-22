@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_suma"
+        android:id="@+id/nav_listac"
         android:title="Lista de citas"/>
     <item
         android:id="@+id/vav_resta"
