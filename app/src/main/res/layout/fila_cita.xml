@@ -32,7 +32,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                android:textColor="#1a27b0"
+                android:textColor="#1B87DD"
                 />
 
             <ImageView
@@ -58,7 +58,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
-                android:textColor="#1a27b0"
+                android:textColor="#1B87DD"
                 />
 
             <TextView
@@ -71,7 +71,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
-                android:textColor="#1a27b0"
+                android:textColor="#1B87DD"
                 />
 
             <TextView
@@ -84,7 +84,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                android:textColor="#1a27b0"
+                android:textColor="#1B87DD"
                 />
 
             <TextView

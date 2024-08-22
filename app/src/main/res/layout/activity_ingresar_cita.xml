@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="23dp"
         android:textStyle="bold"
+        android:textColor="#1B87DD"
         />
 
     <EditText
@@ -32,7 +33,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:background="@drawable/caja"
+        />
 
     <EditText
         android:id="@+id/edtFechaC"
@@ -45,7 +48,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtMascotaC" />
+        app:layout_constraintTop_toBottomOf="@+id/edtMascotaC"
+        android:background="@drawable/caja"
+        />
 
     <EditText
         android:id="@+id/edtMotivoC"
@@ -57,7 +62,9 @@
         android:hint="Ingresa Motivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtFechaC" />
+        app:layout_constraintTop_toBottomOf="@+id/edtFechaC"
+        android:background="@drawable/caja"
+        />
 
     <Button
         android:id="@+id/btnRegistrarCita"
@@ -67,6 +74,10 @@
         android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtMotivoC" />
+        app:layout_constraintTop_toBottomOf="@+id/edtMotivoC"
+        android:textSize="16sp"
+        android:backgroundTint="#1B87DD"
+        android:textColor="@color/white"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,15 @@
             android:name=".vista.IngresarCitaActivity"
             android:exported="true" />
         <activity
+            android:name=".vista.Activity_loguin"
+            android:exported="true" />
+        <activity
+            android:name=".vista.ListaCitaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".vista.Activity_registrar_dueno"
+            android:exported="true" />
+        <activity
             android:name=".vista.MainActivity"
             android:exported="true" >
             <intent-filter>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-    tools:context=".activity_loguin">
+    tools:context=".vista.Activity_loguin">
 
 
     <EditText
@@ -39,21 +39,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:text="Iniciar sesión"
-        android:background="@drawable/boton_fondo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasenaL" />
+        app:layout_constraintTop_toBottomOf="@+id/etContrasenaL"
+        android:textSize="16sp"
+        android:backgroundTint="#1B87DD"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/textView10"
@@ -64,19 +68,24 @@
         android:text="Veterinaria Huellas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#1B87DD"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:textSize="20sp"
+        android:layout_marginTop="52dp"
         android:text="Correo:"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        android:textColor="#1B87DD"
+        />
 
     <TextView
         android:id="@+id/textView12"
@@ -88,6 +97,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCorreoL" />
+        app:layout_constraintTop_toBottomOf="@+id/etCorreoL"
+        android:textColor="#1B87DD"
+        />
+
+    <TextView
+        android:id="@+id/txtRegistrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Registrate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        android:onClick="onclikRegistrate"
+        android:textColor="#1B87DD"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
