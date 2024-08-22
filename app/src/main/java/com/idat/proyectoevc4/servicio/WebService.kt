@@ -3,6 +3,7 @@ package com.idat.proyectoevc4.servicio
 
 import com.google.gson.GsonBuilder
 import com.idat.proyectoevc4.modelo.Cita
+import com.idat.proyectoevc4.modelo.CitaResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,6 +19,9 @@ object AppConstantes{
 }
 
 interface WebService {
+
+    @GET("/Cita/Listar")
+    suspend fun listarCita():Response<List<Cita>>
 
     @POST("/Cita/Ingresar")
     suspend fun ingresarCita(@Body cita: Cita): Response<Cita>
